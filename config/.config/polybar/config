@@ -1,0 +1,240 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+
+background = #ff1d2021
+foreground = #ffebdbb2
+foreground-alt = #00ffffff
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+white = #fbf1c7
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b16286
+aqua = #689d6a
+orange = #d65d0e
+
+[modules]
+left = i3 mpris mpris-track
+center = date
+right = gmail network volumeintel battery dunst
+
+
+[global/wm]
+margin-top    = 25
+margin-bottom = 25
+
+[bar/top]
+
+width      = 100%
+height     = 40
+locale     = en_US.UTF-8
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+enable-ipc = true
+monitor = eDP1
+
+
+font-0              = System San Francisco:size=16;0
+font-1              = FontAwesome:size=16;0
+
+modules-left        = ${modules.left}
+modules-center      = ${modules.center}
+modules-right       = ${modules.right}
+
+;tray-position       = right
+;tray-padding        = 10
+;tray-transparent    = false
+
+underline-size      = 0
+
+spacing             = 0
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+
+[bar/external]
+
+width      = 100%
+height     = 40
+locale     = en_US.UTF-8
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+enable-ipc = true
+monitor = HDMI1
+
+
+font-0              = System San Francisco:size=16;0
+font-1              = FontAwesome:size=16;0
+
+modules-left        = ${modules.left}
+modules-center      = ${modules.center}
+modules-right       = ${modules.right}
+
+;tray-position       = right
+;tray-padding        = 10
+;tray-transparent    = false
+
+underline-size      = 0
+
+spacing             = 0
+padding-left        = 0
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+
+
+[module/xwindow]
+type              = internal/xwindow
+label             = %title:0:30:...%
+
+
+[module/i3]
+type                       = internal/i3
+strip-wsnumbers            = true
+
+ws-icon-0                  = 1
+ws-icon-1                  = 2
+ws-icon-2                  = 3
+ws-icon-3                  = 4
+ws-icon-4                  = 5
+format                     = <label-state> <label-mode>
+;label-mode-foreground      = ${colors.foreground}
+label-mode-background      = ${colors.background}
+label-mode-padding         = 3
+label-focused-foreground   = ${colors.background}
+label-focused-background   = ${colors.foreground-alt}
+label-focused-padding      = 3
+;label-unfocused-background = ${colors.foreground}
+;label-unfocused-foreground = ${colors.foreground}
+
+label-unfocused-padding    = 3
+
+label-urgent-foreground    = ${colors.background}
+label-urgent-background    = ${colors.blue}
+label-urgent-padding       = 3
+label-visible-padding      = 1
+
+
+[module/mpd]
+type                     = internal/mpd
+
+host                     = 127.0.0.1
+port                     = 6600
+password                 =
+
+; Seconds to sleep between progressbar/song timer sync
+; Default: 1
+interval                 = 2
+format-online            =  <icon-play>  <label-time>  <label-song>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = ${self.format-online}
+format-online-foreground = ${colors.red}
+label-song-foreground = ${colors.foreground-alt}
+label-time-foreground = ${colors.foreground-alt}
+
+icon-play                = ⏵
+icon-pause               = ⏸
+icon-stop                = ⏹
+icon-prev                = ⏮
+icon-next                = ⏭
+icon-seekb               = ⏪
+icon-seekf               = ⏩
+icon-random              = 🔀
+icon-repeat              = 🔁
+icon-repeatone           = 🔂
+
+[module/volumeintel]
+type                      = internal/volume
+format-volume             = <ramp-volume> <label-volume>
+master-mixer              = Master
+label-muted               =  muted
+ramp-volume-0             = 
+ramp-volume-1             = 
+ramp-volume-2             = 
+format-volume-padding     = 2
+mapping                   = true
+
+
+[module/date]
+type              = internal/date
+interval          = 2
+time              = "%H:%M"
+time-alt          = "%A, %d. %B"
+format            = <label>
+format-padding    = 1
+label             = "%time%"
+label-font        = 6
+
+[module/battery]
+type                         = internal/battery
+battery                      = BAT0
+adapter                      = AC
+full-at                      = 99
+
+format-charging              = <animation-charging> <label-charging>
+
+format-discharging           = <ramp-capacity> <label-discharging>
+label-discharging            = %percentage%% (%time%)
+
+format-full-prefix           = "  "
+
+format-padding               = 2
+
+ramp-capacity-0              = 
+ramp-capacity-1              = 
+ramp-capacity-2              = 
+ramp-capacity-3              = 
+ramp-capacity-4              = 
+
+animation-charging-0         = 
+animation-charging-1         = 
+animation-charging-2         = 
+animation-charging-3         = 
+animation-charging-4         = 
+animation-charging-framerate = 750
+
+[module/gmail]
+type = custom/script
+exec = ~/.config/polybar/gmail/launch.py --color '#dbdbb2' --nosound
+tail = true
+format-padding = 2
+click-left = xdg-open https://mail.google.com
+
+[module/dunst]
+type = custom/ipc
+initial = 1
+format-foreground = ${colors.foreground}
+format-padding = 2
+hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}    %{A}" &
+
+[module/updates-pacman-aurhelper]
+type = custom/script
+exec = bash ~/.config/polybar/updates-pacman-aurhelper.sh
+interval = 600
+format-padding = 2
+
+[module/network]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+label-connected = " %downspeed%  %upspeed%"
+label-disconnected = disconnected
+label-connected-background = #1d2021
+format-padding = 2

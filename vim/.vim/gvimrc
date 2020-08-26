@@ -1,0 +1,9 @@
+colorscheme termschool
+set guifont=Hack\ 11
+set guioptions -=m  "menu bar
+set guioptions -=T  "toolbar
+set guioptions -=r  "scrollbar"
+set lines=99999
+set columns=99999
+
+imap <C-S-v> <esc>"+gP"<esc>a

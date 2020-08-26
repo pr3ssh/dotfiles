@@ -1,0 +1,123 @@
+xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.hintstyle: hintfull
+Xft.dpi: 170
+Xcursor.size: 42
+
+!Colors
+
+*.cursorColor:  #ebdbb2
+*.background: #282828
+*.foreground: #ebdbb2
+
+! black
+*.color0:       #282828
+*.color8:       #928374
+
+! red
+*.color1:       #cc241d
+*.color9:       #fb4934
+
+! green
+*.color2:       #98971a
+*.color10:      #b8bb26
+
+! yellow
+*.color3:       #d79921
+*.color11:      #fabd2f
+
+! blue
+*.color4:       #458588
+*.color12:      #83a598
+
+! magenta
+*.color5:       #b16286
+*.color13:      #d3869b
+
+! cyan
+*.color6:       #689d6a
+*.color14:      #8ec07c
+
+! white
+*.color7:       #a89984
+*.color15:      #ebdbb2
+
+! 256 color resources
+*.color24:  #076678
+*.color66:  #427b58
+*.color88:  #9d0006
+*.color96:  #8f3f71
+*.color100: #79740e
+*.color108: #8ec07c
+*.color109: #83a598
+*.color130: #af3a03
+*.color136: #b57614
+*.color142: #b8bb26
+*.color167: #fb4934
+*.color175: #d3869b
+*.color208: #fe8019
+*.color214: #fabd2f
+*.color223: #ebdbb2
+*.color228: #f4e8ba
+*.color229: #fdf4c1
+*.color230: #ffffc8
+*.color234: #1d2021
+*.color235: #282828
+*.color236: #32302f
+*.color237: #3c3836
+*.color239: #504945
+*.color241: #665c54
+*.color243: #7c6f64
+*.color244: #928374
+*.color245: #928374
+*.color246: #a89984
+*.color248: #bdae93
+*.color250: #d5c4a1
+
+
+! transparency - true or false (default)
+URxvt*transparent: false
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: Blue
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 30
+
+! scrollback buffer lines - 65535 is max on most machines (64 is default)
+URxvt*saveLines: 65535
+
+! font color (default is black)
+!URxvt*foreground: White
+
+! background color (prior to tinting) (default is white)
+!URxvt*background: Blue
+
+URxvt*font: xft:Hack Nerd Font:pixelsize=26:antialias=true:hinting=true
+URxvt*boldFont: xft:Hack Nerd Font:bold:pixelsize=26:antialias=true:hinting=true
+
+! scrollbar - true (default) or false
+URxvt*scrollBar: false
+
+! scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right: true
+
+! scrollbar style - rxvt (default), plain, next, or xterm
+URxvt*scrollstyle: rxvt
+
+! allow copy and paste
+URxvt.perl-ext-common: default,clipboard,matcher,font-size
+URxvt.iso14755: False
+URxvt.keysym.Shift-Control-V:   perl:clipboard:paste
+URxvt.keysym.Control-Up:     perl:font-size:increase
+URxvt.keysym.Control-Down:   perl:font-size:decrease
+URxvt.url-launcher: /usr/bin/firefox
+URxvt.matcher.button: 1
+
+! Map CAPS LOCK to ESC
+setxkbmap -option caps:escape

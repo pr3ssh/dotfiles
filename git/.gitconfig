@@ -1,0 +1,47 @@
+[user]
+  name = pr3ssh
+  email = x@pr3ssh.net
+
+[alias]
+  br = branch
+  co = commit
+  ch = checkout
+  df = diff
+  g = grep -I
+  pb = publish-branch
+  pp = !"echo 'Pull'; git pull; echo 'Push'; git push"
+  rb = rbranch
+  rc = rank-contributors
+  rv = review
+  sm = show-merges
+  st = status -sb
+  ac = !git add -A && git commit -am
+  lg = !git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+  default = current
+[apply]
+  whitespace = fix
+[core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+  whitespace = fix,space-before-tab,tab-in-indent,trailing-space
+[color]
+  ui = auto
+[color "branch"]
+  current = white reverse
+  local = white
+  remote = blue
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = green
+  changed = cyan
+  untracked = red
+[merge]
+  log = true
+	tool = vimdiff
+[pull]
+	ff = only

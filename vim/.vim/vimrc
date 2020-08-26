@@ -1,0 +1,189 @@
+set nocompatible
+filetype on
+filetype indent on
+filetype plugin on
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required! 
+Plugin 'gmarik/Vundle.vim'
+
+" Plugins
+" vim-scripts
+Plugin 'SelectBuf'
+Plugin 'genutils'
+Plugin 'tComment'
+" Github Plugins
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ervandew/supertab'
+" I use ultisnips instead of snipmate
+" because it has conflicts with supertab
+" when you want to insert tab on a newline
+Plugin 'SirVer/ultisnips'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-surround'
+Plugin 'rking/ag.vim'
+Plugin 'rstacruz/sparkup'
+Plugin 'scrooloose/syntastic'
+Plugin 'paradigm/vim-multicursor'
+Plugin 'groenewege/vim-less'
+Plugin 'junegunn/goyo.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'scrooloose/nerdtree'
+"
+" Colorschemes
+Plugin 'morhetz/gruvbox'
+Plugin 'tomasr/molokai'
+
+
+call vundle#end()
+
+set backupskip=/tmp/*,/private/tmp/*"
+let mapleader = ","
+
+map <leader>p :!clear && processing-java --output=/tmp/processing/ --force --sketch=%:p:h --run<cr>
+
+colorscheme gruvbox
+set background=dark
+syntax on
+set cursorline
+set hlsearch
+set ignorecase
+set number
+set relativenumber
+set pastetoggle=<F2>
+set expandtab
+set wrap
+set autoindent
+set smartcase
+set incsearch
+set showmatch
+set splitbelow splitright
+set backspace=indent,eol,start
+set fileencoding=utf-8
+set encoding=utf-8
+set noswapfile
+set wildmenu
+set wildmode=list:full
+set wildignore+=.git
+
+" Indentations
+autocmd FileType * set softtabstop=2|set shiftwidth=2
+autocmd FileType python set softtabstop=4|set shiftwidth=4
+
+" Autosettings
+augroup mkd " MarkDown
+  autocmd FileType mkd setlocal ai spell nofoldenable colorcolumn=80
+augroup END
+
+augroup commit
+  autocmd FileType gitcommit,cvs setlocal spell textwidth=72 colorcolumn=73
+augroup END
+
+" Enable the mouse
+if has('mouse')
+  set mouse=a
+endif
+
+" Enable the status bar
+set laststatus=2
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+let g:airline_powerline_fonts = 1
+
+
+" Mappings
+
+cmap w!! w !sudo tee > /dev/null %
+
+:nnoremap <Space> @q
+
+" :map <C-m> :NERDTreeToggle<CR>
+" :map <C-c> :NERDTreeClose<CR>
+
+:nmap <f11> :%s/\s\+$//<CR>
+
+:map <f12> :noh<CR>
+:imap <f12> <esc>:noh<CR>a
+
+:map <C-g> :Goyo<CR>
+:imap <C-g> <esc>:Goyo<CR>a
+
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>a
+map <C-t> <esc>:tabnew<CR>
+map <C-q> <C-w>c
+map <C-S-c> :'<,'>w !xclip -sel clip<CR><CR>
+
+noremap H ^
+noremap L $
+noremap J 5j
+noremap K 5k
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"   Tab nav
+map ;] :tabnext<cr>
+map ;[ :tabprevious<cr>
+
+"White spaces"
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+highlight TabSpace ctermbg=yellow ctermfg=white guibg=#592929
+match TabSpace /\t/
+
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+
+" Work
+
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|CVS$\|\.svn$\|node_modules$\|target$|\.pyc$\',
+  \ 'file': '\.class$\|\.so$',
+  \ }
+let g:ctrlp_extensions = ['dir', 'mixed']
+let g:vundle_default_git_proto = 'git'
+
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-f> :ZoomToggle<CR>
+
+
+"Python
+autocmd FileType python map <buffer> <f8> :call flake8#Flake8()<CR>
+
+" Latex
+autocmd FileType latex map <f7> :! pdflatex %<CR><CR>
+autocmd FileType latex map <f8> :! mupdf $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+
+
+" EJS Support
+autocmd BufNewFile,BufRead *.ejs set filetype=html
+autocmd BufNewFile,BufRead *.ejs runtime! ftplugin/html/sparkup.vim
+"
+" VueJS Support
+autocmd BufNewFile,BufRead *.vue set filetype=html
+autocmd BufNewFile,BufRead *.vue runtime! ftplugin/html/sparkup.vim
