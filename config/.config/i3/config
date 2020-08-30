@@ -25,8 +25,8 @@ set $red-color           #fb4934
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
 
-assign [class="Google-chrome"] workspace 2
-assign [class="Spotify"] workspace 10
+assign [class="Chromium"] workspace 2
+for_window [class="Spotify"] move to workspace 10
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
