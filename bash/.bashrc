@@ -119,6 +119,7 @@ alias pdftex='pdflatex --synctex=1'
 alias space='df -h'
 alias getpassword='pwgen -csnyB1 32 | xclip -sel clip'
 alias gs='git status -sb'
+alias xc='xclip -sel clip'
 
 # Software - curses
 alias files='ranger'
