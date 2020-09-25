@@ -155,10 +155,10 @@ if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     source /usr/bin/virtualenvwrapper.sh
 fi
 export NODE_PATH="/usr/bin/nodejs"
-# source /etc/bash_completion.d/password-store
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:/usr/share/processing:~/.cabal/bin:$PATH"
+export GEM_HOME="$HOME/gems"
 export GOPATH="/home/pr3ssh/gocode"
+# source /etc/bash_completion.d/password-store
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/gems/bin:/usr/local/heroku/bin:/usr/share/processing:~/.cabal/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -176,3 +176,6 @@ export NVM_DIR="$HOME/.nvm"
 # FASD and Z
 eval "$(fasd --init auto)"
 . /usr/bin/z.sh
+
+# Install Ruby Gems to ~/gems
+export PATH="$HOME/gems/bin:$PATH"
