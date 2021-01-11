@@ -41,13 +41,6 @@ workspace 10 output eDP1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# choose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
-# font pango:System San Francisco Display 10
 font pango:Hack 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -70,6 +63,8 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym Control+Return exec rofi -threads 0 -show run
 bindsym XF86Search exec networkmanager_dmenu
 bindsym Shift+Control+Return exec locate -e -i --regex "/home/$USER/[^\.]+" | rofi -dmenu -i | xargs -r -0 xdg-open
+
+bindsym Print exec flameshot gui
 
 # change focus
 bindsym $mod+h focus left
@@ -167,10 +162,10 @@ bindsym $mod+Control+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+Control+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+w exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+w exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Shift+q exec "oblogout"
-bindsym $mod+Shift+q exec systemctl poweroff
-bindsym $mod+Shift+r exec systemctl reboot
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'Do you really want to power off your laptop?' -b 'Yes, power off' 'systemctl poweroff'"
+bindsym $mod+Shift+r exec "i3-nagbar -t warning -m 'Do you really want to reboot your laptop?' -b 'Yes, reboot' 'systemctl reboot'"
 bindsym $mod+Shift+e exec ~/.config/i3/lock.sh
 
 # resize window (you can also use the mouse for that)
