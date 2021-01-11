@@ -113,13 +113,17 @@ alias mkdir='mkdir -pv'
 alias mv='mv -i'
 alias rmd='rm -r'
 alias mirrorvga='xrandr --output VGA1 --mode 1024x768 --same-as LVDS1'
-alias screenshot='kazam'
+alias screenshot='flameshot'
 alias startserver='python -m SimpleHTTPServer'
 alias pdftex='pdflatex --synctex=1'
 alias space='df -h'
 alias getpassword='pwgen -csnyB1 32 | xclip -sel clip'
 alias gs='git status -sb'
 alias xc='xclip -sel clip'
+alias cat='bat'
+
+# Docker
+alias deb='container_id=$(docker ps -a | fzf | awk "{print $1}"); docker exec -ti $container_id bash'
 
 # Software - curses
 alias files='ranger'
