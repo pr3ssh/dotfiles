@@ -2,22 +2,24 @@
 add_newline = false
 
 # Overwrite a default_prompt_order and  use custom prompt_order
-prompt_order = [
-        "username",
-        "hostname",
-        "directory",
-        "git_branch",
-        "git_commit",
-        "git_state",
-        "git_status",
-        "cmd_duration",
-        "line_break",
-        "character",
-        ]
+format = """\
+        $username\
+        $hostname\
+        $directory\
+        $git_branch\
+        $git_commit\
+        $git_state\
+        $git_status\
+        $cmd_duration\
+        $line_break\
+        $character\
+        """
+
+command_timeout = 1000
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
-symbol = "➜"     # The "symbol" segment is being set to "➜"
+format = "➜ "
 
 # Disable the package module, hiding it from the prompt completely
 [package]
