@@ -42,6 +42,8 @@
   untracked = red
 [merge]
   log = true
-	tool = vimdiff
+  tool = vimdiff
 [pull]
-	ff = only
+  rebase = false
+[init]
+  defaultBranch = main
