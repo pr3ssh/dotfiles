@@ -125,7 +125,7 @@ label-focused-padding      = 3
 label-unfocused-padding    = 3
 
 label-urgent-foreground    = ${colors.background}
-label-urgent-background    = ${colors.blue}
+label-urgent-background    = ${colors.green}
 label-urgent-padding       = 3
 label-visible-padding      = 1
 
@@ -221,8 +221,8 @@ type = custom/ipc
 initial = 1
 format-foreground = ${colors.foreground}
 format-padding = 2
-hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
-hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}    %{A}" &
+hook-0 = echo "%{A1:dunstctl set-paused true && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:dunstctl set-paused false && polybar-msg hook dunst 1:}    %{A}" &
 
 [module/updates-pacman-aurhelper]
 type = custom/script
