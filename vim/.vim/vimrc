@@ -101,6 +101,14 @@ cmap w!! w !sudo tee > /dev/null %
 
 :nnoremap <Space> @q
 
+" Copy/Yank (like C or D)
+:nnoremap Y y$
+
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
 " :map <C-m> :NERDTreeToggle<CR>
 " :map <C-c> :NERDTreeClose<CR>
 

@@ -104,6 +104,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ~='cd ~'
+alias ls='ls --color=auto'
 alias ll='ls -lF'
 alias la='ls -lFA'
 alias l='ls -CF'
@@ -121,6 +122,7 @@ alias getpassword='pwgen -csnyB1 32 | xclip -sel clip'
 alias gs='git status -sb'
 alias xc='xclip -sel clip'
 alias cat='bat'
+alias vim='nvim'
 
 # Docker
 alias deb='container_id=$(docker ps -a | fzf | awk "{print $1}"); docker exec -ti $container_id bash'
@@ -156,14 +158,14 @@ alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 
 export EDITOR=vim
 export WORKON_HOME="~/env"
-if [ -f /usr/bin/virtualenvwrapper.sh ]; then
-    source /usr/bin/virtualenvwrapper.sh
-fi
+# if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+#     source /usr/bin/virtualenvwrapper.sh
+# fi
 export NODE_PATH="/usr/bin/nodejs"
 export GEM_HOME="$HOME/gems"
 export GOPATH="/home/pr3ssh/gocode"
 # source /etc/bash_completion.d/password-store
-export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/gems/bin:/usr/local/heroku/bin:/usr/share/processing:~/.cabal/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/gems/bin:/usr/local/heroku/bin:/usr/share/processing:~/.cabal/bin:$HOME/.local/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
