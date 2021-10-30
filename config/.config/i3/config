@@ -22,6 +22,18 @@ set $border-color        #fabd2f
 set $red-color           #fb4934
 
 
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
 hide_edge_borders both
 for_window [class="^.*"] border pixel 3
 
