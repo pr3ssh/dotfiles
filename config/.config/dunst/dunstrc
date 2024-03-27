@@ -10,16 +10,16 @@
 [global]
 monitor = 0
 follow = keyboard
-geometry = "750x4-25+25"
 corner_radius = 5
 indicate_hidden = yes
 shrink = false
 transparency = 0
-notification_height = 0
-padding = 20
-horizontal_padding = 10
+width = 400
+height = 600
+padding = 15
+horizontal_padding = 15
 frame_width = 3
-frame_color = "#ebdbb2"
+frame_color = "#ff79c6"
 
 
 # Define a color for the separator.
@@ -28,8 +28,8 @@ frame_color = "#ebdbb2"
 #  * foreground: use the same color as the foreground;
 #  * frame: use the same color as the frame;
 #  * anything else will be interpreted as a X color.
-separator_color = auto
-separator_height = 2
+separator_color = "#ff79c6"
+separator_height = 1
 
 # Sort messages by urgency.
 sort = yes
@@ -51,19 +51,19 @@ markup = full
 # Markup is allowed
 format = "<b>%s</b>\n%b"
 
-alignment = center
+alignment = left
 show_age_threshold = 60
 word_wrap = yes
 ellipsize = middle
 ignore_newline = no
 stack_duplicates = true
 hide_duplicate_count = true
-show_indicators = yes
-icon_position = left
-max_icon_size = 256
+show_indicators = no
+icon_position = off
+max_icon_size = 150
 icon_path = /usr/share/icons/Papirus/64x64/devices/:/usr/share/icons/Papirus/48x48/status/:/usr/share/icons/Papirus/64x64/apps/
 sticky_history = yes
-history_length = 20
+history_length = 10
 browser = /usr/bin/qutebrowser
 
 # Always run rule-defined scripts, even if the notification is suppressed
@@ -71,7 +71,6 @@ always_run_script = true
 
 title = Dunst
 class = Dunst
-startup_notification = false
 force_xinerama = false
 
 mouse_left_click = do_action
@@ -81,35 +80,23 @@ mouse_right_click = close_current
 [experimental]
 per_monitor_dpi = false
 
-[shortcuts]
-close = ctrl+space
-close_all = ctrl+shift+space
-history = ctrl+grave
-context = ctrl+shift+period
-
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#ebdbb2"
-frame_width = 3
+background = "#202020"
+foreground = "#ffffff"
 timeout = 5
 # Icon for notifications with low urgency, uncomment to enable
 #icon = ~/.local/share/arch.png
 
 [urgency_normal]
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#ebdbb2"
-frame_width = 3
+background = "#202020"
+foreground = "#ffffff"
 timeout = 5
 
 [urgency_critical]
-background = "#282828"
-foreground = "#ebdbb2"
-frame_color = "#ebdbb2"
-frame_width = 3
+background = "#202020"
+foreground = "#ffffff"
 timeout = 5
 
 # Every section that isn't one of the above is interpreted as a rules to

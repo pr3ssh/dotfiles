@@ -100,6 +100,7 @@ eval "$(starship init bash)"
 #####################################################################
 
 # Dir navigation
+alias x='startx'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -114,13 +115,14 @@ alias mkdir='mkdir -pv'
 alias mv='mv -i'
 alias rmd='rm -r'
 alias mirrorvga='xrandr --output VGA1 --mode 1024x768 --same-as LVDS1'
-alias screenshot='flameshot'
+alias screenshot='flameshot gui'
 alias startserver='python -m SimpleHTTPServer'
 alias pdftex='pdflatex --synctex=1'
 alias space='df -h'
 alias getpassword='pwgen -csnyB1 32 | xclip -sel clip'
 alias gs='git status -sb'
 alias xc='xclip -sel clip'
+alias errors='journalctl -b -p err'
 alias cat='bat'
 alias vim='nvim'
 
@@ -145,7 +147,7 @@ alias spotify='spotify --force-device-scale-factor=2'
 #alias a="ack -ia"
 alias du="du -h -s"
 alias g="git"
-alias grep='GREP_COLOR="1;37;45" LANG=C grep --color=auto'
+alias grep='GREP_COLOR="mt=1;37;45" LANG=C grep --color=auto'
 alias h="history"
 alias ip="curl -s http://checkip.dyndns.com/ | sed 's/[^0-9\.]//g'"
 
@@ -161,6 +163,7 @@ export WORKON_HOME="~/env"
 # if [ -f /usr/bin/virtualenvwrapper.sh ]; then
 #     source /usr/bin/virtualenvwrapper.sh
 # fi
+
 export NODE_PATH="/usr/bin/nodejs"
 export GEM_HOME="$HOME/gems"
 export GOPATH="/home/pr3ssh/gocode"
@@ -169,6 +172,7 @@ export PATH="$HOME/.gem/ruby/2.7.0/bin:$HOME/gems/bin:/usr/local/heroku/bin:/usr
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+export NODE_OPTIONS=--openssl-legacy-provider
 
 
 
@@ -186,3 +190,12 @@ eval "$(fasd --init auto)"
 
 # Install Ruby Gems to ~/gems
 export PATH="$HOME/gems/bin:$PATH"
+
+
+
+
+
+[ -z "$NVM_DIR"  ] && export NVM_DIR="$HOME/.nvm"
+source /usr/share/nvm/nvm.sh
+source /usr/share/nvm/bash_completion
+source /usr/share/nvm/install-nvm-exec

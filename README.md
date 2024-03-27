@@ -17,6 +17,7 @@ DOTFILES
 * Spicetify
 * Ranger
 * Starship
+* Maim
 
 
 ## GTK3 theme

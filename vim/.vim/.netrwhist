@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/pr3ssh/downloads/__MACOSXcta'
 let g:netrw_dirhist_3='/home/pr3ssh/tmp/mostly-adequate-guide/node_modules/gitbook-cli'
 let g:netrw_dirhist_2='/home/pr3ssh/dev/dotfiles/config/.config/spicetify/Themes/Gruvbox-Gold'
 let g:netrw_dirhist_1='/home/pr3ssh/dev/dotfiles/config/.config/polybar/gmail'

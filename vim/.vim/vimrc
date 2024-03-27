@@ -19,10 +19,6 @@ Plugin 'tComment'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
-" I use ultisnips instead of snipmate
-" because it has conflicts with supertab
-" when you want to insert tab on a newline
-Plugin 'SirVer/ultisnips'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'rking/ag.vim'
@@ -33,11 +29,11 @@ Plugin 'groenewege/vim-less'
 Plugin 'junegunn/goyo.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'leafOfTree/vim-vue-plugin'
 " Plugin 'scrooloose/nerdtree'
 "
 " Colorschemes
-Plugin 'morhetz/gruvbox'
-Plugin 'tomasr/molokai'
+Plugin 'kyoz/purify', { 'rtp': 'vim'  }
 
 
 call vundle#end()
@@ -45,12 +41,12 @@ call vundle#end()
 set backupskip=/tmp/*,/private/tmp/*"
 let mapleader = ","
 
-map <leader>p :!clear && processing-java --output=/tmp/processing/ --force --sketch=%:p:h --run<cr>
+" map <leader>p :!clear && processing-java --output=/tmp/processing/ --force --sketch=%:p:h --run<cr>
+map <leader>p :! python %
 
-colorscheme gruvbox
+colorscheme purify
 set background=dark
 syntax on
-set cursorline
 set hlsearch
 set ignorecase
 set number
@@ -74,6 +70,7 @@ set wildignore+=.git
 " Indentations
 autocmd FileType * set softtabstop=2|set shiftwidth=2
 autocmd FileType python set softtabstop=4|set shiftwidth=4
+autocmd FileType vue set softtabstop=2|set shiftwidth=2
 
 " Autosettings
 augroup mkd " MarkDown
@@ -101,6 +98,11 @@ cmap w!! w !sudo tee > /dev/null %
 
 :nnoremap <Space> @q
 
+" Open a terminal
+
+:noremap <leader>t :botright new <Bar> :terminal<cr>i
+:noremap <leader>tv :botright vnew <Bar> :terminal<cr>i
+
 " Copy/Yank (like C or D)
 :nnoremap Y y$
 
@@ -124,7 +126,7 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>a
 map <C-t> <esc>:tabnew<CR>
 map <C-q> <C-w>c
-map <C-S-c> :'<,'>w !xclip -sel clip<CR><CR>
+map <C-c> :'<,'>w !xclip -sel clip<CR><CR>
 
 noremap H ^
 noremap L $
