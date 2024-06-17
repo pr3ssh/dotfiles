@@ -29,3 +29,17 @@ DOTFILES
 stow -t ~ bash config fonts git vim
 sh ~/.vim/setup.sh
 ```
+
+## Additional notes
+
+### Remap some keys
+
+Just copy /etc/inputrc in ~/.inputrc and then make all mods as follows:
+
+```
+# Ctrl-Delete: delete next word
+"\e[3;5~": shell-kill-word
+
+# Ctrl-Backspace
+"\C-H": shell-backward-kill-word
+```

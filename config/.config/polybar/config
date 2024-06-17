@@ -50,7 +50,7 @@ padding-left       = 0
 padding-right      = 0
 module-margin-left = 0
 
-monitor = eDP1
+monitor = eDP-1
 enable-ipc = true
 
 fixed-center = true
@@ -70,7 +70,7 @@ locale     = en_US.UTF-8
 background = ${colors.bar_bg}
 foreground = ${colors.bar_fg}
 
-monitor = HDMI1
+monitor = HDMI-1
 enable-ipc = true
 
 fixed-center = true

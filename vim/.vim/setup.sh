@@ -8,25 +8,25 @@ cd $HOME
 timestamp=$(date "+%Y%m%d_%H%M%S")
 branch="master"
 
-function print_help {
-  echo "Usage:
-./setup.sh [-r|-u|-h] [branch]
+#function print_help {
+#  echo "Usage:
+#./setup.sh [-r|-u|-h] [branch]
+#
+#-r      Remote setup, grabs your Vim config from GitHub
+#-u      Update Vim config from GitHub and update all Plugins
+#-h      Print this help
+#branch  The branch name to checkout after setup.
+#        Defaults to 'master'. Only works with -r or no options
+#"
 
--r      Remote setup, grabs your Vim config from GitHub
--u      Update Vim config from GitHub and update all Plugins
--h      Print this help
-branch  The branch name to checkout after setup.
-        Defaults to 'master'. Only works with -r or no options
-"
-
-  exit 1;
-}
+#  exit 1;
+#}
 
 if [ $# -gt 2 ]; then
   echo "Too many args...
 "
 
-  print_help
+  #print_help
 fi
 
 case $1 in
